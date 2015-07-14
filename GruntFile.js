@@ -8,22 +8,24 @@ module.exports = function (grunt)
 			},
 			dist: {
 				src: ['src/resources/js/**/*.js'],
-				dest: 'src/<%= pkg.name %>.js'
+				dest: 'src/build/js/<%= pkg.name %>.js'
 			},
 			deps: {
 				src: [
 					'bower_components/modernizr/modernizr.js',
 					'bower_components/jquery/dist/jquery.js',
 					'bower_components/bootstrap/dist/js/bootstrap.js',
-					'bower_components/angularjs/angular.min.js',
+					'bower_components/angularjs/angular.js'
 				],
-				dest: 'src/<%= pkg.name %>-deps.js'
+				dest: 'src/build/js/<%= pkg.name %>-deps.js'
 			},
 			css: {
-				src: ['bower_components/bootstrap/dist/css/bootstrap.min.css',
-						'src/resources/css/styles.css'
-				],
-				dest: 'src/resources/css/<%= pkg.name %>.css'
+				src: ['src/resources/css/*.css'],
+				dest: 'src/build/css/<%= pkg.name %>.css'
+			},
+			cssDeps:{
+				src: ['bower_components/bootstrap/dist/css/bootstrap.css', 'bower_components/bootstrap/dist/css/bootstrap-theme.css'],
+				dest: 'src/build/css/<%= pkg.name %>.css'
 			},
 			move: {
 				src: ['bower_components/angularjs/angular.min.js.map'],
@@ -47,7 +49,11 @@ module.exports = function (grunt)
 			styles: {
 				files: ['src/resources/css/*.scss'],
 				tasks: ['sass']
-			}
+			},
+            css:{
+                files: ['src/resources/css/**/.css'],
+                tasks: ['concat:css']
+            }
 		}
 	});
 
@@ -61,8 +67,9 @@ module.exports = function (grunt)
 
 	//tasks
 	grunt.registerTask('default', 'Default Task Alias', ['build']);
-
-	grunt.registerTask('build', 'Build the application', 
+    grunt.registerTask('concatDeps', '', ['concat:deps']);
+    grunt.registerTask('concatStyle', '', ['concat:css']);
+	grunt.registerTask('build', 'Build the application',
 		['sass:dev',
 		'concat'
 		]);
