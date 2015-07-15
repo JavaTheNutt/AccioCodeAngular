@@ -1,26 +1,3 @@
-var app = angular.module('myApp', []);
-app.controller('MainCtrl', ['$scope', function ($scope) {
-    $scope.data = {
-        label : 'Joe',
-        class: 'default',
-        edit: 'Edit'
-    };
-    $scope.toggleHide = function () {
-        $('#changeButtonClass').toggleClass('hide');
-        $scope.data.edit = checkEdit();
-
-    };
-    var checkEdit = function () {
-        var item = $('#changeButtonClass');
-        if (item.hasClass('hide')) {
-            return 'Edit';
-        } else {
-            return 'Finish';
-        }
-    }
-}]);
-
-
 app.controller('SecondCtrl', ['$scope', function ($cope) {
 
 }]);
@@ -98,16 +75,3 @@ app.directive('ambrose', function () {
         }
     }
 });
-
-app.controller('ShieldCtrl', ['$scope', function ($scope) {
-    $scope.shieldNames = [];
-    this.addReigns = function () {
-        $scope.shieldNames.push('Roman Reigns: Juggernaut');
-    };
-    this.addRollins = function () {
-        $scope.shieldNames.push('Seth Rollins: Architect');
-    };
-    this.addAmbrose = function () {
-        $scope.shieldNames.push('Dean Ambrose: Lunatic Fringe');
-    }
-}]);

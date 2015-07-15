@@ -4,20 +4,29 @@
 	<title>AccioCode AngularJS Tutorial</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-COMPATIBLE" content="IE=edge,chrome=1">
-	<meta name="viewport" content="width=device-width, user-scalable=no">
-	<script src="build/js/angularjstutorial-deps.js"></script>
-	<script src="build/js/angularjstutorial.js"></script>
-
-	<link rel="stylesheet" href="build/css/angularjstutorial.css">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <link rel="stylesheet" href="build/css/angularjstutorial-deps.css">
+    <link rel="stylesheet" href="build/css/angularjstutorial.css">
 </head>
-<body ng-app="myApp">
+<body data-ng-app="myApp">
 
-	<div class="mainContainer" ng-controller="MainCtrl">
-		<h1>Features</h1>
-		<h2>Compile</h2>
-		<button  class="btn btn-danger">{{name}}</button>
-		
+	<div class="mainContainer" data-ng-controller="MainCtrl">
+        <input type="text" data-ng-model="data.label">
+        <input type="text" data-ng-model="data.class" class="hide" id="changeButtonClass">
+		<button  class="btn btn-default" data-ng-click="toggleHide()">{{data.edit}}</button>
+		<button  class="btn btn-{{data.class}}">{{data.label}}</button>
 	</div>
-
+    <div ng-controller="SecondCtrl">
+        <walterwhite message="I Am Heisenberg!"></walterwhite>
+        <div interactive-button class="btn btn-default">Button</div>
+        <theshield reigns rollins ambrose class="btn btn-danger">The Shield</theshield>
+        <ul>
+            <li><theshield reigns>Reigns</theshield></li>
+            <li><theshield rollins>Rollins</theshield></li>
+            <li><theshield ambrose>Ambrose</theshield></li>
+        </ul>
+    </div>
+    <script src="build/js/angularjstutorial-deps.js"></script>
+    <script src="build/js/angularjstutorial.js"></script>
 </body>
 </html>

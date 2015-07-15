@@ -4,3 +4,4 @@ docs/
 .sass-cache/
 bin/
 .idea/
+*.xml

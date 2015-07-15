@@ -25,7 +25,7 @@ module.exports = function (grunt)
 			},
 			cssDeps:{
 				src: ['bower_components/bootstrap/dist/css/bootstrap.css', 'bower_components/bootstrap/dist/css/bootstrap-theme.css'],
-				dest: 'src/build/css/<%= pkg.name %>.css'
+				dest: 'src/build/css/<%= pkg.name %>-deps.css'
 			},
 			move: {
 				src: ['bower_components/angularjs/angular.min.js.map'],
@@ -46,12 +46,12 @@ module.exports = function (grunt)
 				files: ['src/resources/js/**/*.js'],
 				tasks: ['concat:dist']
 			},
-			styles: {
-				files: ['src/resources/css/*.scss'],
+			/*styles: {
+				files: ['src/resources/css/!*.scss'],
 				tasks: ['sass']
-			},
+			},*/
             css:{
-                files: ['src/resources/css/**/.css'],
+                files: ['src/resources/css/styles.css'],
                 tasks: ['concat:css']
             }
 		}
@@ -69,8 +69,9 @@ module.exports = function (grunt)
 	grunt.registerTask('default', 'Default Task Alias', ['build']);
     grunt.registerTask('concatDeps', '', ['concat:deps']);
     grunt.registerTask('concatStyle', '', ['concat:css']);
+    grunt.registerTask('cssDeps', '', ['concat:cssDeps']);
 	grunt.registerTask('build', 'Build the application',
 		['sass:dev',
 		'concat'
 		]);
-}
+};
