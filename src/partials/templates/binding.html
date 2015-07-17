@@ -1,0 +1,6 @@
+<div class="mainContainer" data-ng-controller="MainCtrl">
+    <input type="text" data-ng-model="data.label">
+    <input type="text" data-ng-model="data.class" class="hide" id="changeButtonClass">
+    <button  class="btn btn-default" data-ng-click="toggleHide()">{{data.edit}}</button>
+    <button  class="btn btn-{{data.class}}">{{data.label}}</button>
+</div>

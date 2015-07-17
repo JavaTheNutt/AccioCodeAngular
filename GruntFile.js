@@ -15,7 +15,8 @@ module.exports = function (grunt)
 					'bower_components/modernizr/modernizr.js',
 					'bower_components/jquery/dist/jquery.js',
 					'bower_components/bootstrap/dist/js/bootstrap.js',
-					'bower_components/angularjs/angular.js'
+					'bower_components/angularjs/angular.js',
+					'bower_components/angular-ui-router/release/angular-ui-router.js'
 				],
 				dest: 'src/build/js/<%= pkg.name %>-deps.js'
 			},
@@ -32,7 +33,12 @@ module.exports = function (grunt)
 				dest: 'src/angular.min.js.map'
 			}
 		},
-
+		uglify: {
+			files : {
+                src : 'src/build/js/angularjstutorial.js',
+                dest: 'src/build/js/angularjstutorial.min.js'
+            }
+		},
 		sass: {
 			dev: {
 				files: {
@@ -70,6 +76,7 @@ module.exports = function (grunt)
     grunt.registerTask('concatDeps', '', ['concat:deps']);
     grunt.registerTask('concatStyle', '', ['concat:css']);
     grunt.registerTask('cssDeps', '', ['concat:cssDeps']);
+    grunt.registerTask('jsMin', '', ['uglify']);
 	grunt.registerTask('build', 'Build the application',
 		['sass:dev',
 		'concat'

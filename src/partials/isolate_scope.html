@@ -1,0 +1,29 @@
+<div class="panel panel-default" ng-controller="ScopeCtrl">
+    <div class="panel-body">
+        <div>
+            <figure>
+                <img src="{{image}}">
+                <figcaption>{{name}}</figcaption>
+            </figure>
+        </div>
+    </div>
+    <div>
+        Select Move Type:
+        <select data-ng-model="movetype"
+                data-ng-options="movetype for movetype in movetypes">
+
+        </select>
+    </div>
+    <div>
+        Move:
+        <input type="text"
+               data-ng-model="value"
+               class="form-control">
+    </div>
+    <div class="panel-footer clearfix">
+        <div class="btn btn-primary"
+             data-ng-click="useMove({name:name, movetype:movetype, move:value})">
+            Action!
+        </div>
+    </div>
+</div>

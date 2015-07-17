@@ -1,0 +1,42 @@
+<div class="container">
+    <h1>Baltimore Ravens</h1>
+    <form class="form-horizontal">
+        <div class="row">
+            <label for="searchName" class="control-label col-xs-4">Search by name</label>
+            <div class="col-xs-8">
+                <input type="text" data-ng-model="search.name" id="searchName" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <label for="searchPos" class="control-label col-xs-4">Search by position</label>
+            <div class="col-xs-8">
+                <input type="text" data-ng-model="search.position" id="searchPos" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <label for="searchNumber" class="control-label col-xs-4">Search by number</label>
+            <div class="col-xs-8">
+                <input type="text" data-ng-model="search.number" id="searchNumber" class="form-control">
+            </div>
+        </div>
+    </form>
+    searchNumber
+    <div data-ng-controller="RavensCtrl">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Player</th>
+                <th>Position</th>
+                <th>Number</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr data-ng-repeat="player in players | filter:search | orderBy:'-name' | limitTo: 5">
+                <td>{{player.name}}</td>
+                <td>{{player.position}}</td>
+                <td>{{player.number}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
