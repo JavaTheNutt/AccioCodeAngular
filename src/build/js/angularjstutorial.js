@@ -1,40 +1,40 @@
-var app = angular.module('myApp', ['ui.router']);
-app.config(['$urlRouterProvider', '$stateProvider', function ($urlRouterProvider, $stateProvider) {
-    $urlRouterProvider.otherwise('/');
-    $stateProvider
-        .state('home', {
-            url: '/',
+var app = angular.module('myApp', ['ngRoute']);
+app.config(['$routeProvider', function ($routeProvider) {
+    $routeProvider
+        .when('/', {
             templateUrl: 'partials/templates/home.html',
             controller: 'ScopeCtrl'
         })
-        .state('contact', {
-            url: '/contact',
+        .when('/contact', {
             templateUrl: 'partials/templates/directive_restrictions.html'
         })
-        .state('about', {
-            url: '/about',
+        .when('/about', {
             templateUrl: 'partials/templates/binding.html',
-            controller:'MainCtrl'
+            controller: 'MainCtrl'
         })
-        .state('second', {
-            url:  '/second',
-            templateUrl: 'partials/templates/second_ctrl.html',
+        .when('/second',{
+            templateUrl:'partials/templates/second_ctrl.html',
             controller: 'SecondCtrl'
         })
-        .state('ravens', {
-            url: '/ravens',
+        .when('/ravens', {
             templateUrl: 'partials/templates/ravens.html',
             controller: 'RavensCtrl'
         })
-        .state('compile', {
-            url: '/compile',
+        .when('/compile', {
             templateUrl: 'partials/templates/compile.html',
             controller: 'CompileCtrl'
         })
-        .state('compile2', {
-            url: '/compile2',
-            templateUrl: 'partials/templates/compile2.html',
-            controller: 'Compile2Ctrl'
+        .when('/transclude',{
+            templateUrl: 'partials/templates/transclude.html'
+        })
+        /*This shows how to add extra parameters to the url. These parameters
+        * can then be extracted in the controller and used*/
+        .when('/calendar/:day/:month/:year', {
+            templateUrl: 'partials/templates/calendar.html',
+            controller: 'CalendarCtrl'
+        })
+        .otherwise({
+            templateUrl: 'partials/templates/404.html'
         })
 }]);
 app.controller('MainCtrl', ['$scope', function ($scope) {
@@ -136,6 +136,13 @@ app.directive('ambrose', function () {
         }
     }
 });
+
+/*$routeParams is used t otake parameters from the URL and use them in the program*/
+app.controller('CalendarCtrl', ['$scope', '$routeParams', function ($scope, $routeParams) {
+    $scope.model = {
+        message: 'Date: ' + $routeParams.day + '/' + $routeParams.month + '/' + $routeParams.year
+    }
+}]);
 
 app.controller('CompileCtrl', ['$scope', function ($scope)
 {
@@ -317,16 +324,14 @@ app.directive('commentrest', function () {
 
 
 
-app.controller('ScopeCtrl', function ($scope, $element)
-{
-    $scope.getMove = function (name, movetype, move)
-    {
+app.controller('ScopeCtrl', ['$scope', function ($scope) {
+    $scope.getMove = function (name, movetype, move) {
         console.log('' + name + ' performed a ' + movetype + ' ' + move);
 
     };
     $scope.movetypes = ['Finisher', 'Offensive Move', 'Defensive Move'];
     $scope.movetype = $scope.movetypes[0];
-});
+}]);
 app.directive('character', function()
 {
     return {
@@ -364,3 +369,14 @@ app.controller('ShieldCtrl', ['$scope', function ($scope) {
 }]);
 
 
+app.directive('buttonDirective', function () {
+    return{
+        restrict:'AE',
+        /*This will allow us to put what is contained within this element into
+        * our template*/
+        transclude: true,
+        template: '<button class="btn btn-primary" type="button">' +
+        'Joes Button <data-ng-transclude></data-ng-transclude>' +
+        '</button>'
+    }
+});

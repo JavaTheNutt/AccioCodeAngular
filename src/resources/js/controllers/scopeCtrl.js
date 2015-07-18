@@ -1,14 +1,12 @@
 
-app.controller('ScopeCtrl', function ($scope, $element)
-{
-    $scope.getMove = function (name, movetype, move)
-    {
+app.controller('ScopeCtrl', ['$scope', function ($scope) {
+    $scope.getMove = function (name, movetype, move) {
         console.log('' + name + ' performed a ' + movetype + ' ' + move);
 
     };
     $scope.movetypes = ['Finisher', 'Offensive Move', 'Defensive Move'];
     $scope.movetype = $scope.movetypes[0];
-});
+}]);
 app.directive('character', function()
 {
     return {

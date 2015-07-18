@@ -15,8 +15,8 @@ module.exports = function (grunt)
 					'bower_components/modernizr/modernizr.js',
 					'bower_components/jquery/dist/jquery.js',
 					'bower_components/bootstrap/dist/js/bootstrap.js',
-					'bower_components/angularjs/angular.js',
-					'bower_components/angular-ui-router/release/angular-ui-router.js'
+					'bower_components/angular/angular.js',
+					'bower_components/angular-route/angular-route.js'
 				],
 				dest: 'src/build/js/<%= pkg.name %>-deps.js'
 			},
