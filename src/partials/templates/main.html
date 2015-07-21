@@ -1,0 +1,97 @@
+<div ng-controller="MainPageCtrl">
+    <div class="col-md-6 col-md-offset-3">
+        <h1 class="text-center">Accio code tutorial</h1>
+        <p>
+            This page is built following the tutorials on YouTube by AccioCode. The tutorials can be
+            found <a href="https://www.youtube.com/playlist?list=PLEDbaVSIL58MB78qU6_I_FZZgNe_Mcb5j" target="_blank">here</a>. The
+            original source for the project can be found <a href="https://github.com/colorfest/angularjs.git" target="_blank">here</a>.
+            The complete source code for the site can be found <a href="https://github.com/JavaTheNutt/acciocodeangular.git" target="_blank">here</a>.
+        </p>
+        <p>
+            Each panel below corresponds to a lesson or set of lessons laid out in the course. Each panel also has a list of three attributes <strong>Route</strong>,
+            <strong>JS File</strong>, <strong>View Template</strong>.
+        </p>
+        <ul>
+            <li><strong>Route</strong> is the route to the view</li>
+            <li><strong>JS File</strong> is the is the file that controls the particular view. These files are located at: src/resources/js/controllers/&ltfilename&gt.js</li>
+            <li><strong>View Template</strong> is the HTML for the particular view snippet to be loaded in. These files are located at : src/partials/templates/&ltfilename&gt.html</li>
+        </ul>
+    </div>
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="row" id="topRow">
+            <descriptive-panel panel-name="Directive Restrictions"
+                               url="#/contact"
+                               description="This is the page that shows different directive restrictions and how to use them "
+                               js="restrictionsCtrl"
+                               template="directive_restrictions"
+                               class="col-md-4">
+
+            </descriptive-panel>
+            <descriptive-panel panel-name="Binding"
+                               url="#/about"
+                               description="This shows how binding is handled in angularjs"
+                               js="MainCtrl"
+                               template="binding"
+                               class="col-md-4">
+            </descriptive-panel>
+            <descriptive-panel panel-name="The Shield"
+                               url="#/second"
+                               description="This gives an example of how the scope can be isolated by for individual panels on the page"
+                               js="SecondCtrl"
+                               template="second_controller"
+                               class="col-md-4">
+            </descriptive-panel>
+
+        </div>
+        <div class="row">
+            <descriptive-panel panel-name="Compile"
+                               url="#/compile"
+                               description="This shows the use of both compile and $compile"
+                               js="CompileCtrl"
+                               template="compile"
+                               class="col-md-4">
+            </descriptive-panel>
+            <descriptive-panel panel-name="Transclude"
+                               url="#/transclude"
+                               description="This shows the use of transclude"
+                               js="**********"
+                               template="transclude"
+                               class="col-md-4">
+            </descriptive-panel>
+            <descriptive-panel panel-name="Providers"
+                               url="#/provide"
+                               description="This shows how to use providers and injectors in angular"
+                               js="ProvideCtrl"
+                               template="providers"
+                               class="col-md-4">
+            </descriptive-panel>
+        </div>
+        <div class="row">
+            <descriptive-panel panel-name="ngAnnotate"
+                               url="#/anno"
+                               description="This shows how to use ngAnnotate to ensure that files can be properly minified"
+                               js="AnnotateCtrl"
+                               template="annotate"
+                               class="col-md-4">
+            </descriptive-panel>
+            <descriptive-panel panel-name="Scope"
+                               url="#/home"
+                               description="This shows how the scope is accessed in angularjs"
+                               js="ScopeCtrl"
+                               template="home"
+                               class="col-md-4">
+            </descriptive-panel>
+            <descriptive-panel panel-name="Ravens"
+                               url="#/ravens"
+                               description="This shows how to retrieve JSON data and add it to a page"
+                               js="RavensCtrl"
+                               template="ravens"
+                               class="col-md-4">
+            </descriptive-panel>
+        </div>
+    </div>
+</div>
+
+
+</div>

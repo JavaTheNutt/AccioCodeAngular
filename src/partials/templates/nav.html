@@ -1,0 +1,20 @@
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="dropdown navbar-right">
+            <a href="#/grunt" class="btn btn-danger navbar-btn">Grunt</a>
+            <a href="#/" class="btn btn-primary navbar-btn">Home</a>
+            <a href="https://github.com/JavaTheNutt/AccioCodeAngular.git" class="btn btn-warning" target="_blank">View on GitHub</a>
+            <button
+                    class="btn btn-success dropdown-toggle navbar-btn"
+                    type="button"
+                    id="dropdownMenu1"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="true">Menu
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li data-ng-repeat="item in items"><a href="{{item.url}}">{{item.name}}</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

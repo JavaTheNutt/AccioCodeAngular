@@ -1,36 +1,34 @@
-app.controller('SecondCtrl', ['$scope', function ($cope) {
+app.controller('SecondCtrl', ['$scope', function ($scope) {
 
 }]);
+/*This directive will be an element directive. It will have a template which is
+* just a single string. It logs its attributes, element and scope.*/
 app.directive('walterwhite', function () {
     return {
+        /*Restrict to an element */
         restrict: 'E',
         transclude: true,
         link: function ($scope, $element, $attr) {
-            /*console.log($scope);
+            console.log($attr);
             console.log($element);
-            console.log($attr);*/
-        }
-    };
-    /*return{
-        /!*This restricts the directive so that it must be an element*!/
-        restrict: 'E',
-        /!*This ensures that the directive will be updated in real time*!/
-        transclude: true,
-        template: '<h2>I am Hisenberg</h2>'
+            console.log($scope);
 
-    }*/
+        },
+        template:'<h2>I am Heisenberg</h2>',
+        controller: 'SecondCtrl'
+    };
 });
 app.directive('interactiveButton', function () {
     return{
         restrict: 'A',
         link: function ($scope, $element, $attrs) {
-            /*$element.bind('mouseenter', function () {
+            $element.bind('mouseenter', function () {
                 console.log($element);
                 $element[0].innerText = 'Rolled Over';
             });
             $element.bind('mouseleave', function () {
                 $element[0].innerText = 'Rolled Out'
-            })*/
+            })
         }
     };
 });

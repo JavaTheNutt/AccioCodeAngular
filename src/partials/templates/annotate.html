@@ -1,0 +1,19 @@
+<div class="container">
+    <h1>ngAnnotate and Uglify</h1>
+    <h4>This shows how to use ngAnnotate to automatically annotate code.</h4>
+    <p>
+        ngAnnotate is a plugin for grunt that annotates your code so that variables do not get
+        lost when the code is minified. In this example the controller specifies a simple message
+        and stores it in the variable 'message'. This message is printed to the screen below. The
+        message is attached to the $scope using code which is not annotated, so if the code is
+        minfied before it is annotated, the variable name for $scope will be changed to 'a' so
+        the message will be attached to the unused variable 'a' rather than to the $scope object.
+        Check out the 'Grunt' section of this page to see how the task is implemented. These files
+        can be found at:
+    </p>
+    <ul>
+        <li><strong>HTML</strong>: <em>'src/partials/templates/annotate.html'</em></li>
+        <li><strong>JS</strong>: <em>'src/resources/controllers/xAnnotate.js'</em></li>
+    </ul>
+    {{message}}
+</div>

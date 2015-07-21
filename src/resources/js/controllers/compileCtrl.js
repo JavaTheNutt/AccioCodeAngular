@@ -2,6 +2,10 @@ app.controller('CompileCtrl', ['$scope', function ($scope)
 {
     $scope.labelName = 'My Button';
     $scope.newElement = angular.element('<div class="btn btn-default">' + $scope.labelName + '</div>')
+    $scope.showExplanation = function () {
+        console.log('test');
+        $('#compileExplanation').toggleClass('hide');
+    }
 }]);
 /*This way of using compile is easier than the below method but it allows less control.
 * Typically this would be used for a website whereas the below method would be used
@@ -46,12 +50,14 @@ app.directive('pageDirective', function ()
                     /*This will change the template above to the html below during the
                     * pre-compile. It is inadvisable to perform DOM manipulation in the pre-compile*/
                     iElem.html('<div class="panel panel-default">Now a panel</div>');
+                    debugger;
                 },
                 post: function postLink(scope, iElem, iAttrs)
                 {
                     console.log('Post');
                     /*iElem is representative of the element that the directive is attached to*/
                     iElem.append(scope.newElement);
+                    debugger;
                 }
             }
         }
@@ -67,16 +73,19 @@ app.directive('pageDirectiveTwo', function ()
         compile: function (tElem, tAttrs)
         {
             console.log('2 Compile it. This is the original compiled DOM');
+            debugger;
             return {
                 pre: function preLink(scope, iElem, iAttrs)
                 {
                     console.log('2 Pre');
+                    debugger;
                 },
                 post: function postLink(scope, iElem, iAttrs)
                 {
                     console.log('2 Post');
                     /*iElem is representative of the element that the directive is attached to*/
                     iElem.append(scope.newElement);
+                    debugger;
                 }
             }
         }
@@ -92,16 +101,19 @@ app.directive('pageDirectiveThree', function ()
         compile: function (tElem, tAttrs)
         {
             console.log('3 Compile it. This is the original compiled DOM');
+            debugger;
             return {
                 pre: function preLink(scope, iElem, iAttrs)
                 {
                     console.log('3 Pre');
+                    debugger;
                 },
                 post: function postLink(scope, iElem, iAttrs)
                 {
                     console.log('3 Post');
                     /*iElem is representative of the element that the directive is attached to*/
                     iElem.append(scope.newElement);
+                    debugger;
                 }
             }
         }

@@ -1,0 +1,44 @@
+<div class="container">
+    <h1>Grunt Concat</h1>
+    <h4>Concat is used to concatenate files into one file.</h4>
+    <p>
+        Concat is an extremely useful tool for any web developer. Concat allows the user
+        to concatenate all of their scripts into one file. This means that all of the scripts
+        can be kept seperate during development for easy debugging but can then be moved to one
+        file for deployment. This reduces load times as the server will only have to load one file from the
+        server. This also works for css.
+    </p>
+    <pre>
+        concat: {
+			options: {
+				separator: "\n\n"
+			},
+			dist: {
+				src: ['src/resources/js/**/*.js'],
+				dest: 'src/build/js/<%= pkg.name %>.js'
+			},
+			deps: {
+				src: [
+					'bower_components/modernizr/modernizr.js',
+					'bower_components/jquery/dist/jquery.js',
+					'bower_components/bootstrap/dist/js/bootstrap.js',
+					'bower_components/angular/angular.js',
+					'bower_components/angular-route/angular-route.js'
+				],
+				dest: 'src/build/js/<%= pkg.name %>-deps.js'
+			},
+			css: {
+				src: ['src/resources/css/*.css'],
+				dest: 'src/build/css/<%= pkg.name %>.css'
+			},
+			cssDeps:{
+				src: ['bower_components/bootstrap/dist/css/bootstrap.css', 'bower_components/bootstrap/dist/css/bootstrap-theme.css'],
+				dest: 'src/build/css/<%= pkg.name %>-deps.css'
+			},
+			move: {
+				src: ['bower_components/angularjs/angular.min.js.map'],
+				dest: 'src/angular.min.js.map'
+			}
+		}
+    </pre>
+</div>

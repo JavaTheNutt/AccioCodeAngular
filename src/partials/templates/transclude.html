@@ -1,3 +1,16 @@
-<button-directive>
-    <span class="badge">&copy; 2015</span>
-</button-directive>
+<div class="container">
+    <h1>Transclude</h1>
+    <h4>This page shows how to use transclude</h4>
+    <p>
+        In this page, the copyright button is hardcoded into the HTML page inside a button-directive tag. This directive
+        has transclude set to true and uses 'data-ng-transclude' to specify where the content from the html page should be placed into
+        the button. These files can be found at:
+    </p>
+    <ul>
+        <li><strong>HTML</strong>: <em>'src/partials/templates/transclude.html'</em></li>
+        <li><strong>JS</strong>: <em>'src/resources/js/controllers/transcludeCtrl.js'</em></li>
+    </ul>
+    <button-directive>
+        <span class="badge">&copy; 2015</span>
+    </button-directive>
+</div>

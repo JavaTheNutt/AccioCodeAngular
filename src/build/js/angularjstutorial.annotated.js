@@ -1,14 +1,9 @@
-/*
-* @ngdoc object
-* @name myApp
-* @description
-* This is the main module for the app. It uses ng-route. This page controls the routing and has the
-* MainCtrl linked to the binding.html page*/
 var app = angular.module('myApp', ['ngRoute']);
 app.config(['$routeProvider', 'boxProvider',  function ($routeProvider, boxProvider) {
     $routeProvider
         .when('/', {
-            templateUrl: 'partials/templates/main.html'
+            templateUrl: 'partials/templates/home.html',
+            controller: 'ScopeCtrl'
         })
         .when('/contact', {
             templateUrl: 'partials/templates/directive_restrictions.html'
@@ -46,22 +41,6 @@ app.config(['$routeProvider', 'boxProvider',  function ($routeProvider, boxProvi
             templateUrl: 'partials/templates/annotate.html',
             controller: 'AnnotateCtrl'
         })
-        .when('/scope', {
-            templateUrl: 'partials/templates/home.html',
-            controller: 'ScopeCtrl'
-        })
-        .when('/grunt', {
-            templateUrl: 'partials/templates/grunt.html'
-        })
-        .when('/grunt/concat', {
-            templateUrl: 'partials/templates/gruntConcat.html'
-        })
-        .when('/grunt/uglify', {
-            templateUrl: 'partials/templates/gruntUglify.html'
-        })
-        .when('/grunt/cssmin', {
-            templateUrl: 'partials/templates/gruntCssMin.html'
-        })
         .otherwise({
             templateUrl: 'partials/templates/404.html'
         });
@@ -69,7 +48,6 @@ app.config(['$routeProvider', 'boxProvider',  function ($routeProvider, boxProvi
     * the setColor() function and passes in the color red*/
     boxProvider.setColor('#ff0000');
 }]);
-/*This controller is responsible for the */
 app.controller('MainCtrl', ['$scope', function ($scope) {
     $scope.data = {
         label : 'Joe',
@@ -92,38 +70,39 @@ app.controller('MainCtrl', ['$scope', function ($scope) {
 }]);
 
 
-
-app.controller('SecondCtrl', ['$scope', function ($scope) {
+app.controller('SecondCtrl', ['$scope', function ($cope) {
 
 }]);
-/*This directive will be an element directive. It will have a template which is
-* just a single string. It logs its attributes, element and scope.*/
 app.directive('walterwhite', function () {
     return {
-        /*Restrict to an element */
         restrict: 'E',
         transclude: true,
         link: function ($scope, $element, $attr) {
-            console.log($attr);
+            /*console.log($scope);
             console.log($element);
-            console.log($scope);
-
-        },
-        template:'<h2>I am Heisenberg</h2>',
-        controller: 'SecondCtrl'
+            console.log($attr);*/
+        }
     };
+    /*return{
+        /!*This restricts the directive so that it must be an element*!/
+        restrict: 'E',
+        /!*This ensures that the directive will be updated in real time*!/
+        transclude: true,
+        template: '<h2>I am Hisenberg</h2>'
+
+    }*/
 });
 app.directive('interactiveButton', function () {
     return{
         restrict: 'A',
         link: function ($scope, $element, $attrs) {
-            $element.bind('mouseenter', function () {
+            /*$element.bind('mouseenter', function () {
                 console.log($element);
                 $element[0].innerText = 'Rolled Over';
             });
             $element.bind('mouseleave', function () {
                 $element[0].innerText = 'Rolled Out'
-            })
+            })*/
         }
     };
 });
@@ -180,10 +159,6 @@ app.controller('CompileCtrl', ['$scope', function ($scope)
 {
     $scope.labelName = 'My Button';
     $scope.newElement = angular.element('<div class="btn btn-default">' + $scope.labelName + '</div>')
-    $scope.showExplanation = function () {
-        console.log('test');
-        $('#compileExplanation').toggleClass('hide');
-    }
 }]);
 /*This way of using compile is easier than the below method but it allows less control.
 * Typically this would be used for a website whereas the below method would be used
@@ -228,14 +203,12 @@ app.directive('pageDirective', function ()
                     /*This will change the template above to the html below during the
                     * pre-compile. It is inadvisable to perform DOM manipulation in the pre-compile*/
                     iElem.html('<div class="panel panel-default">Now a panel</div>');
-                    debugger;
                 },
                 post: function postLink(scope, iElem, iAttrs)
                 {
                     console.log('Post');
                     /*iElem is representative of the element that the directive is attached to*/
                     iElem.append(scope.newElement);
-                    debugger;
                 }
             }
         }
@@ -251,19 +224,16 @@ app.directive('pageDirectiveTwo', function ()
         compile: function (tElem, tAttrs)
         {
             console.log('2 Compile it. This is the original compiled DOM');
-            debugger;
             return {
                 pre: function preLink(scope, iElem, iAttrs)
                 {
                     console.log('2 Pre');
-                    debugger;
                 },
                 post: function postLink(scope, iElem, iAttrs)
                 {
                     console.log('2 Post');
                     /*iElem is representative of the element that the directive is attached to*/
                     iElem.append(scope.newElement);
-                    debugger;
                 }
             }
         }
@@ -279,115 +249,22 @@ app.directive('pageDirectiveThree', function ()
         compile: function (tElem, tAttrs)
         {
             console.log('3 Compile it. This is the original compiled DOM');
-            debugger;
             return {
                 pre: function preLink(scope, iElem, iAttrs)
                 {
                     console.log('3 Pre');
-                    debugger;
                 },
                 post: function postLink(scope, iElem, iAttrs)
                 {
                     console.log('3 Post');
                     /*iElem is representative of the element that the directive is attached to*/
                     iElem.append(scope.newElement);
-                    debugger;
                 }
             }
         }
     }
 });
 
-app.directive('gruntPanel', function () {
-    return{
-        restrict: 'E',
-        scope:{
-            name:'@',
-            url:'@',
-            description: '@'
-        },
-        templateUrl: 'partials/templates/gruntPanel.html'
-    }
-});
-
-/*This is the directive for the panels tobe displayed on the homepage*/
-app.directive('descriptivePanel', function () {
-    return{
-        /*Restrict to an element*/
-        restrict: 'E',
-        /*Assign attributes*/
-        scope: {
-            panelName: '@',
-            url: '@',
-            description: '@',
-            js: '@',
-            template:'@'
-        },
-        templateUrl: 'partials/templates/descriptive_panel.html',
-        controller:'MainPageCtrl'
-    }
-});
-app.controller('MainPageCtrl', ['$scope', function ($scope) {
-
-}]);
-
-/*This is the directive to place the navbar on the screen*/
-app.directive('navDirective', function () {
-    return{
-        restrict: 'E',
-        templateUrl: 'partials/templates/nav.html',
-        controller: 'NavCtrl',
-        scope: {}
-    }
-});
-/*This controller holds the array of items to be displayed in the dropdown menu of the nav bar*/
-app.controller('NavCtrl', ['$scope', function ($scope) {
-    $scope.items = [
-        {
-            name: "Directive Restrictions",
-            url: "#/contact"
-        },
-        {
-            name: "Binding",
-            url: "#/about"
-        },
-        {
-            name: "The Shield",
-            url: "#/second"
-        },
-        {
-            name: "Ravens",
-            url: "#/ravens"
-        },
-        {
-            name: "Transclude",
-            url: "#/transclude"
-        },
-        {
-            name: "Providers",
-            url: "#/provide"
-        },
-        {
-            name: "Compile",
-            url: "#/compile"
-        },
-        {
-            name: "Annotation",
-            url: "#/anno"
-        },
-        {
-            name: "Scope",
-            url: "#/scope"
-        }
-
-    ];
-
-}]);
-
-/*@ngdoc object
-* @name myApp
-* @description
-* This where the provide controller and the box provider are written*/
 app.controller('ProvideCtrl', ['$scope', '$injector', function ($scope, $injector)
 {
     /*This will allow us to inject our box provider into this function
@@ -544,6 +421,6 @@ app.directive('buttonDirective', function () {
     }
 });
 
-app.controller('AnnotateCtrl', function ($scope) {
+app.controller('AnnotateCtrl', ['$scope', function ($scope) {
     $scope.message = 'I am a message';
-});
+}]);

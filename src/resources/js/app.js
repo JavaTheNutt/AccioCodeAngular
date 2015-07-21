@@ -1,9 +1,14 @@
+/*
+* @ngdoc object
+* @name myApp
+* @description
+* This is the main module for the app. It uses ng-route. This page controls the routing and has the
+* MainCtrl linked to the binding.html page*/
 var app = angular.module('myApp', ['ngRoute']);
-app.config(['$routeProvider', function ($routeProvider) {
+app.config(['$routeProvider', 'boxProvider',  function ($routeProvider, boxProvider) {
     $routeProvider
         .when('/', {
-            templateUrl: 'partials/templates/home.html',
-            controller: 'ScopeCtrl'
+            templateUrl: 'partials/templates/main.html'
         })
         .when('/contact', {
             templateUrl: 'partials/templates/directive_restrictions.html'
@@ -33,10 +38,38 @@ app.config(['$routeProvider', function ($routeProvider) {
             templateUrl: 'partials/templates/calendar.html',
             controller: 'CalendarCtrl'
         })
+        .when('/provide', {
+            templateUrl: 'partials/templates/providers.html',
+            controller: 'ProvideCtrl'
+        })
+        .when('/anno', {
+            templateUrl: 'partials/templates/annotate.html',
+            controller: 'AnnotateCtrl'
+        })
+        .when('/scope', {
+            templateUrl: 'partials/templates/home.html',
+            controller: 'ScopeCtrl'
+        })
+        .when('/grunt', {
+            templateUrl: 'partials/templates/grunt.html'
+        })
+        .when('/grunt/concat', {
+            templateUrl: 'partials/templates/gruntConcat.html'
+        })
+        .when('/grunt/uglify', {
+            templateUrl: 'partials/templates/gruntUglify.html'
+        })
+        .when('/grunt/cssmin', {
+            templateUrl: 'partials/templates/gruntCssMin.html'
+        })
         .otherwise({
             templateUrl: 'partials/templates/404.html'
-        })
+        });
+    /*This is the box provider set up in provide.js. It calls
+    * the setColor() function and passes in the color red*/
+    boxProvider.setColor('#ff0000');
 }]);
+/*This controller is responsible for the */
 app.controller('MainCtrl', ['$scope', function ($scope) {
     $scope.data = {
         label : 'Joe',
@@ -57,3 +90,4 @@ app.controller('MainCtrl', ['$scope', function ($scope) {
         }
     }
 }]);
+

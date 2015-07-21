@@ -15,3 +15,32 @@ html, body {
 .hide{
     display: none;
 }
+.boxContainer{
+    width: 100px;
+    height: 100px;
+    display: block;
+    text-align: center;
+    font-size: 2em;
+    color: white;
+    background-color: #000;
+    padding: 25px 0 0 0 ;
+}
+.panelHeader{
+    background-color: #000000;
+}
+/*descriptive-panel{
+    border: solid black 1px;
+    border-radius: 20px;
+    background-color: #afd9ee;
+    margin: 10px;
+    padding: 10px;
+}*/
+descriptive-panel div.btn.btn-default{
+    padding-left: 50px;
+}
+#topRow{
+    margin-top: 60px;
+}
+.directiveRestrictionsElement{
+    color: red;
+}

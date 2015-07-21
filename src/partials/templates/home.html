@@ -1,3 +1,22 @@
+<div class="container">
+    <h1>Isolating Scope</h1>
+    <h4>This page shows how to isolate the scope directives placed on the same page</h4>
+    <p>
+        On this page there are three <em>element</em> directives called 'character'. Each <em>element</em>
+        also has 4 custom <em>attributes</em>. These attributes are <strong>name</strong>, <strong>image</strong>,
+        <strong>movetype</strong> and <strong>use-move</strong>. The character directive also has a template attached
+        to it. This template will render a panel for each character element. The panel will display data that will be passed
+        into it from the attributes of the element.
+    </p>
+    <p>
+        The panel will contain the source of the image which is passed into the img tag
+        from the element. The same will go for the caption of the picture. Then there is
+        a select box which will allow the user to select a move type from a list created in the
+        controller. Then there is the input box which will allow the user to enter a move. The
+        final element is a button which will call the useMove()function and pass the name, move type
+        and move. This function will log a string to the screen.
+    </p>
+</div>
 <div class="mainContainer" data-ng-app="myApp">
     <div ng-controller="ScopeCtrl">
         <div class="row">

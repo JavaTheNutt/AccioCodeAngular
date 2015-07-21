@@ -1,5 +1,20 @@
 <div class="container">
     <h1>Baltimore Ravens</h1>
+    <h4>This page shows how to access JSON data and print it to the screen.</h4>
+    <p>
+        Here the players data is stored in a JSON file and the first 5 matching names are printed to the table using ng-repeat.
+        This is done by creating a service in the JavaScript file which will retrieve the JSON file and pass the data to the controller
+        which will then sort it and place it on the screen.
+        The data can be sorted by the three fields represented through the input boxes.
+    </p>
+    These files can be accessed at:
+    <ul>
+        <li><strong>HTML</strong>: <em>'src/partials/templates/ravens.html'</em></li>
+        <li><strong>JS</strong>: <em>'src/resources/js/controllers/ravensCtrl.js'</em></li>
+    </ul>
+    <br>
+    <br>
+    <br>
     <form class="form-horizontal">
         <div class="row">
             <label for="searchName" class="control-label col-xs-4">Search by name</label>
@@ -30,6 +45,7 @@
             </tr>
             </thead>
             <tbody>
+            <!--This will place the first 5 names on the page, sorted by search criteria and sorted in descending order-->
             <tr data-ng-repeat="player in players | filter:search | orderBy:'-name' | limitTo: 5">
                 <td>{{player.name}}</td>
                 <td>{{player.position}}</td>

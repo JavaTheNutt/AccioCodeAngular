@@ -1,0 +1,22 @@
+<div class="container">
+    <h1>Providers</h1>
+    <h4>This page shows how to use custom providers</h4>
+    <p>
+        Here the background color of the box is set to black in the css. A provider is created which will be invoked by the
+        controller. This provider contains a function to change the color of the box. The function call for this is in the .config()
+        section of the file. This is located in the file <em>app.js</em>. The files can be found here:
+    </p>
+    <ul>
+        <li><strong>HTML</strong>: <em>'src/partials/templates/providers.html'</em></li>
+        <li><strong>JS</strong>: <em>'src/resources/js/controllers/provide.js'</em></li>
+    </ul>
+    <p>The app.js file can be found here:</p>
+    <ul>
+        <li><em>'src/resources/js/app.js'</em></li>
+    </ul>
+    <div data-ng-controller="ProvideCtrl">
+        <div class="boxContainer" style="background-color: {{color}}">
+            X
+        </div>
+    </div>
+</div>

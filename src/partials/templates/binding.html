@@ -1,4 +1,14 @@
-<div class="mainContainer" data-ng-controller="MainCtrl">
+<div class="container" data-ng-controller="MainCtrl">
+    <h1>Binding</h1>
+    <h4>This page shows how binding should be utilised.</h4>
+    <p>
+        Below there is a text box and two buttons. The text box holds the value of the right button. This can be edited
+        and the value of the button will be changed in real time. This is a good example of Angular's two-way data binding.
+        When the button labelled 'Edit' is clicked, a second text box appears with the value of 'default'. This box controls
+        the class attached to the second button. This file can be found at :
+    </p>
+    <p><strong>HTML</strong>:<em>'src/resources/partials/templates/binding.html'</em></p>
+    <p><strong>JS</strong>:<em>'src/resources/js/app.js'</em></p>
     <input type="text" data-ng-model="data.label">
     <input type="text" data-ng-model="data.class" class="hide" id="changeButtonClass">
     <button  class="btn btn-default" data-ng-click="toggleHide()">{{data.edit}}</button>

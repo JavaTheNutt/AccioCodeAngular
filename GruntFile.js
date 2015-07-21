@@ -35,7 +35,7 @@ module.exports = function (grunt)
 		},
 		uglify: {
 			files : {
-                src : 'src/build/js/angularjstutorial.js',
+                src : 'src/build/js/angularjstutorial.annotated.js',
                 dest: 'src/build/js/angularjstutorial.min.js'
             }
 		},
@@ -46,7 +46,24 @@ module.exports = function (grunt)
 				}
 			}
 		},
-
+        ngAnnotate:{
+            options:{
+                singleQuotes : true
+            },
+            dist:{
+                files: [
+                    {
+                        expand: true,
+                        src: 'src/build/js/<%= pkg.name %>.js',
+                        ext: '.annotated.js',
+                        extDot: 'last'
+                    }
+                ]
+            }
+        },
+        ngdocs:{
+            all: ['src/resources/js/app.js','src/resources/js/**/*.js']
+        },
 		watch: {
 			scripts: {
 				files: ['src/resources/js/**/*.js'],
@@ -69,6 +86,7 @@ module.exports = function (grunt)
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-ng-annotate');
 	grunt.loadNpmTasks('grunt-ngdocs');
 
 	//tasks
@@ -77,6 +95,7 @@ module.exports = function (grunt)
     grunt.registerTask('concatStyle', '', ['concat:css']);
     grunt.registerTask('cssDeps', '', ['concat:cssDeps']);
     grunt.registerTask('jsMin', '', ['uglify']);
+	grunt.registerTask('docs', '', ['ngdocs']);
 	grunt.registerTask('build', 'Build the application',
 		['sass:dev',
 		'concat'

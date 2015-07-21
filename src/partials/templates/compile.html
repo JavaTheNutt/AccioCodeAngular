@@ -1,7 +1,69 @@
-<div data-ng-controller="CompileCtrl">
-    <compile-directive></compile-directive>
-    <page-directive></page-directive>
-    <page-directive></page-directive>
-    <page-directive-two></page-directive-two>
-    <page-directive-three></page-directive-three>
+<div class="container">
+    <div class="hide" id="compileExplanation">
+        <h1>Compile and $compile</h1>
+        <h4>This page shows how use both compile and $compile</h4>
+        <p>
+            Here there are several debugger calls which will pause the JavaScript until they are resumed. This is useful to see exactly
+            what the compile that is added to the directives is doing.
+        </p>
+        <p>
+            The controller attached to the below data is specifies two variables, one is the label to be attached to each button. The second is a button element
+            that will be instantiated. On this page there is a compile-directive element, two page-directive elements, a page-directive-two element and a page-directive-three
+            element. The order in which the code is executed is as follows:
+        </p>
+        <ul>
+            <li>
+                The template for the compile-directive is placed on the screen along with the template
+                for the first page-directive. There is also a the first console.log().Then debugger pauses
+                the program until the user clicks.
+            </li>
+            <li>
+                Next the template for the second page-directive is added and another message is logged. The debugger will pause
+                again.
+            </li>
+            <li>
+                Then the template for the page-directive-two is loaded and another message is logged. The debugger will
+                pause again.
+            </li>
+            <li>
+                Then the template for page-directive-three is loaded and and another message is logged. The debugger will
+                pause again.
+            </li>
+            <li>
+                Now that all directives have been displayed, the program will return to the top directive (compile-directive)
+                and use the $compile referenced in the link to append the button specified in the controller to this element.
+                This is a shorter and more simplified method than the one attached to the below elements. The debugger will now
+                pause again.
+            </li>
+            <li>
+                Next the program will move to the first page-directive and execute the code in the pre part of the compile.
+                This will change the template from the div that it was, into a panel. It will also log a message. This is only for example purposes as
+                DOM manipulation should generally be reserved for the post section of the compile. Pre is more often used for
+                data manipulation. The debugger will then pause again.
+            </li>
+            <li>
+                Then the program will move to the post compile and execute the code found there to append the button.
+                It will pause again. This process will repeat, completing the pre section, pausing, completing the post
+                section, pausing, and moving to the next element.
+            </li>
+            <li>
+                In summary, the program will run through the directives and display the initial templates in the DOM before
+                going back to compile each directive individually.
+            </li>
+        </ul>
+        <p>The files can be found at:</p>
+        <ul>
+            <li><strong>HTML</strong>: <em>'src/partials/templates/compile.html'</em></li>
+            <li><strong>JS</strong>: <em>'src/resources/controllers/compileCtrl.js'</em></li>
+        </ul>
+    </div>
+    <div data-ng-controller="CompileCtrl">
+        <compile-directive></compile-directive>
+        <page-directive></page-directive>
+        <page-directive></page-directive>
+        <page-directive-two></page-directive-two>
+        <page-directive-three></page-directive-three>
+        <button class="btn btn-success" data-ng-click="showExplanation()">Show Explanation</button>
+    </div>
+
 </div>

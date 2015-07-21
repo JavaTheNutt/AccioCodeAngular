@@ -1,10 +1,33 @@
-<div ng-controller="SecondCtrl">
-    <walterwhite message="I Am Heisenberg!"></walterwhite>
-    <div interactive-button class="btn btn-default">Button</div>
-    <theshield reigns rollins ambrose class="btn btn-danger">The Shield</theshield>
+<div class="container">
+    <h1>Directives</h1>
+    <h4>This shows how to create directives.</h4>
     <ul>
-        <li><theshield reigns>Reigns</theshield></li>
-        <li><theshield rollins>Rollins</theshield></li>
-        <li><theshield ambrose>Ambrose</theshield></li>
+        <li>
+            The first directive is an <em>element</em> directive. This one simply has a single template line which is printed to the screen.
+        </li>
+        <li>
+            The second directive is attached to a button and it is an <em>attribute</em> directive. This directive contains two functions,
+            one to change the text of the button when the mouse enters, and another when the mouse leaves.
+        </li>
+        <li>
+            The next directive is attached to the button and it is an <em>element</em> directive that contains three <em>attribute</em> directives. Below that is an unordered list with
+            three items. The red button has all three <em>attributes</em> attached and whn rolled over, will log out all three members of the shield. Each list item has one of the three <em>attributes</em>
+            and will log out the respective member when rolled over.
+        </li>
     </ul>
+    These files can be found at:
+    <ul>
+        <li><strong>HTML</strong>: <em>'src/partials/second_ctrl.html'</em></li>
+        <li><strong>JS</strong>: <em>'src/resources/js/controllers/SecondCtrl.js'</em></li>
+    </ul>
+    <div ng-controller="SecondCtrl">
+        <walterwhite></walterwhite>
+        <div interactive-button class="btn btn-default">Button</div><br>
+        <theshield reigns rollins ambrose class="btn btn-danger">The Shield</theshield>
+        <ul>
+            <li><theshield reigns>Reigns</theshield></li>
+            <li><theshield rollins>Rollins</theshield></li>
+            <li><theshield ambrose>Ambrose</theshield></li>
+        </ul>
+    </div>
 </div>
